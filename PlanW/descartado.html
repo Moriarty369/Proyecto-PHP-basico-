@@ -1,0 +1,157 @@
+<?php
+
+
+
+  /*  Paginacion */
+
+/*   $size_paginas=3;
+  if(isset($_GET["pagina"])){
+      if($_GET["pagina"]==1){
+        header("Location:index.php");
+
+      }else{
+        $pagina=$_GET["pagina"];
+      }
+
+  }else{
+
+    $pagina=1;
+  }
+
+  $empezar_desde=($pagina-1)*$size_paginas;
+
+  $sql_total="SELECT * FROM PERSONAS";
+
+  $resultadopag=$conn->prepare($sql_total);
+  $resultadopag->execute(array());
+
+  $num_filas=$resultadopag->rowCount();
+  $total_paginas=ceil($num_filas/$size_paginas);
+ */
+
+  /* fin paginacion */
+
+
+  $qrelCursos = $conn->query("SELECT cursos.nombre, cursos.fecha_inicio, cursos.fecha_fin FROM rl_curso_persona INNER JOIN rl_curso_persona.id_curso = cursos.id_curso, rl_curso_persona.id_persona = personas.id_persona ")->fetchAll(PDO::FETCH_OBJ);
+  $qrelAlumnos= $conn->query("SELECT personas.DNI, personas.nombre, personas.apellido1, personas.apellido2, personas.email, personas.telefono FROM rl_curso_persona INNER JOIN rl_curso_persona.id_curso = cursos.id_curso, rl_curso_persona.id_persona = personas.id_persona WHERE rol = 0 ")->fetchAll(PDO::FETCH_OBJ);
+  $qrelDocentes= $conn->query("SELECT personas.DNI, personas.nombre, personas.apellido1, personas.apellido2, personas.email, personas.telefono FROM rl_curso_persona INNER JOIN rl_curso_persona.id_curso = cursos.id_curso, rl_curso_persona.id_persona = personas.id_persona WHERE rol = 1 ")->fetchAll(PDO::FETCH_OBJ);
+
+?>
+
+<div class="container">
+
+
+<h1>READ RELACIONES</h1>
+
+
+<?php foreach($qrelCursos as $qrelCurso): ?>
+<?php foreach($qrelAlumnos as $qrelAlumno): ?>
+<?php foreach($qrelDocentes as $qrelDocente): ?>
+<div class="accordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <?php echo $qrelCurso->nombre; ?>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <?php echo $qrelCurso->fecha_inicio; ?>
+      <?php echo $qrelCurso->fecha_fin; ?>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Alumnos
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <table class="table">
+                            <tr>
+                                <td scope="row"><?php echo $qrelAlumno->DNI; ?></td>
+                                <td scope="row"><?php echo $qrelAlumno->nombre; ?></td>
+                                <td scope="row"><?php echo $qrelAlumno->apellido1; ?></td>
+                                <td scope="row"><?php echo $qrelAlumno->apellido2; ?></td>
+                                <td scope="row"><?php echo $qrelAlumno->enail; ?></td>
+                                <td scope="row"><?php echo $qrelAlumno->telefono; ?></td>
+                            </tr>
+                            </table>
+                        </div>
+                        </div>
+                </div>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Alumnos
+                        </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <table class="table">
+                            <tr>
+                                <td scope="row"><?php echo $qrelDocente->DNI; ?></td>
+                                <td scope="row"><?php echo $qrelDocente->nombre; ?></td>
+                                <td scope="row"><?php echo $qrelDocente->apellido1; ?></td>
+                                <td scope="row"><?php echo $qrelDocente->apellido2; ?></td>
+                                <td scope="row"><?php echo $qrelDocente->enail; ?></td>
+                                <td scope="row"><?php echo $qrelDocente->telefono; ?></td>
+                            </tr>
+                            </table>
+                        </div>
+                        </div>
+                </div>
+      </div>
+    </div>
+  </div>
+
+    
+<?php endforeach;?>
+<?php endforeach;?>
+<?php endforeach;?>
+
+
+
+<div >
+
+          
+
+<?php 
+
+/* for($i=1; $i<=$total_paginas;$i++){
+  echo "<a href='?pagina=".$i."'>".$i."&nbsp;</a>";
+} */
+
+?>
+
+
+<ul class="nav nav-pills flex-column mb-auto sdb-Chactive">
+        <li class="nav-item active" id="activadoindex" onclick="mostrarfuntion('readRelaciones')">
+            <a href="#" class="nav-link link-dark" aria-current="page" >
+                <i class="fa-solid fa-house"><use xlink:href="index.php"></use></i>
+                Inicio</a>
+        </li>
+        <li class="nav-item" id="activadocursos" onclick="mostrarfuntion('readCursos')">
+            <a href="#" class="nav-link link-dark" aria-current="page">
+                <i class="fa-solid fa-school"></i>
+                Cursos</a>
+        </li>
+        <li class="nav-item" id="activadoestudiantes" onclick="mostrarfuntion('readAlumnos')">
+            <a href="#" class="nav-link link-dark" aria-current="page">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Estudiantes</a>
+        </li>
+        <li class="nav-item" id="activadocentes" onclick="mostrarfuntion('readDocentes')">
+            <a href="#" class="nav-link link-dark" aria-current="page">
+                <i class="fa-solid fa-user-tie"></i>
+                Docentes</a>
+        </li>
+        <li class="nav-item" id="activadorelaciones" onclick="mostrarfuntion('createRelaciones')">
+            <a href="#" class="nav-link link-dark" aria-current="page">
+                <i class="fa-solid fa-puzzle-piece"></i>
+                Relaciones</a>
+        </li>
+    </ul>
+
+

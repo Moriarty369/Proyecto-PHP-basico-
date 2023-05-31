@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap");
+body {
+  background: #eee;
+}
+body.dark {
+  background-color: #000;
+}
+
+.dfc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dfrsb {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  color: #146C75;
+  font-family: "Arvo", serif;
+}
+
+p, input, select, table, button {
+  font-family: "Inconsolata", monospace;
+}
+
+.material-symbols-outlined {
+  color: #C28154;
+}
+
+#manito {
+  font-size: 1.8rem;
+}
+
+/*-----------------dark mode-----------------------*/
+ * {
+  box-sizing: border-box;
+}
+body {
+  color: #eee;
+  height: 100vh;
+  margin: 0;
+  transition: background 0.2s linear;
+}
+body.dark {
+  background-color: #292c35;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color:#111;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+} */
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: pink;
+}
+
+.fa-sun {
+  color: yellow;
+}
+/*-----------------calendario-----------------------*/
+.contenedor {
+  width: 65rem;
+}
+
+/*-----------------paginacion-----------------------*/
+.paginacion a {
+  text-decoration: none;
+  color: #C28154;
+}
+
+.paginacion a.active {
+  text-decoration: none;
+  color: #35B4C2;
+}
+
+.paginacion a:visited {
+  text-decoration: none;
+  color: #146C75;
+}
+
+/*-----------------login-----------------------*/
+#login i {
+  margin-right: 1rem;
+  color: #35B4C2;
+}
+
+/*-----------------footer-----------------------*/
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #146C75;
+  color: #eee;
+  height: 2.5rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: #eee;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #eee;
+}
+
+/*-----------------sidebar y el "contenedor general"-----------------------*/
+#sdb-side_nav {
+  background: #35B4C2;
+  min-width: 12rem;
+  max-width: 12rem;
+}
+
+#sdb-side_arrow {
+  background: #35B4C2;
+  min-width: 4rem;
+  max-width: 4rem;
+}
+
+.sdb-content {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sdb-h-color {
+  background: #eee;
+}
+
+.sdb-sidebar li.active {
+  background-color: #eee;
+  border-radius: 0.2rem;
+}
+
+.sdb-sidebar li.active a, #sdb li.active a:hover {
+  color: #5b98a6;
+}
+
+.sdb-sidebar li a {
+  color: #eee;
+}
+
+#menufondo {
+  position: fixed;
+  bottom: 0;
+}
+
+.switch {
+  background-color: #343D5D;
+  border-radius: 1000px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+}
+.switch::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: unset;
+  background-color: #f1f1f1;
+  border-radius: 100px;
+  transition: 0.3s ease all;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.switch.active {
+  background-color: #C28154;
+  color: #000;
+}
+.switch.active::after {
+  right: 0;
+  left: unset;
+}
+.switch span {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background-attachment: none;
+  color: #eee;
+}
+
+/*-------------------tablas-----------------------------*/
+th, td {
+  font-size: 9pt;
+}
+
+.btn-mycolor {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #C28154;
+  --bs-btn-border-color: #C28154;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #C28154;
+  --bs-btn-hover-border-color: #C28154;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #C28154;
+  --bs-btn-active-border-color: #C28154;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #C28154;
+  --bs-btn-disabled-border-color: #C28154;
+}/*# sourceMappingURL=style.css.map */

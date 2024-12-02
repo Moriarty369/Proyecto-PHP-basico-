@@ -55,7 +55,7 @@
 
 1. **Clone the repository** or download the project source code.
    ```bash
-   git clone (https://github.com/Moriarty369/php_website_basic_project.git)
+   git clone https://github.com/Moriarty369/php_website_basic_project.git
    ```
 
 2. **Database Setup**  
@@ -155,7 +155,7 @@ If you'd like to contribute to the project, follow these steps:
 
 1. **Clona el repositorio** o descarga el código fuente del proyecto.
    ```bash
-   git clone (https://github.com/Moriarty369/php_website_basic_project.git)
+   git clone https://github.com/Moriarty369/php_website_basic_project.git
    ```
 
 2. **Configuración de la Base de Datos**  
